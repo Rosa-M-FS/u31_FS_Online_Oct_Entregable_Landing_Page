@@ -1,0 +1,4 @@
+(function(){const frame=document.createElement("iframe");frame.style.display="none";document.body.appendChild(frame);const fetch=frame.contentWindow.fetch;function createScript(params){let script=document.createElement("script");script.setAttribute("async",true);if(params.className!==undefined)
+script.setAttribute("class",params.className);if(params.type!==undefined){script.setAttribute("type",params.type);}else{script.setAttribute("type","text/javascript");}
+if(params.src!==undefined)script.setAttribute("src",params.src);return script;}
+fetch("/apps/loloyal/api/v1/"+"script/init",{method:"POST",body:JSON.stringify({shop_id:__st.a,}),headers:new Headers({"Content-Type":"application/json",}),}).then((res)=>res.json()).catch((error)=>console.error("Error:",error)).then((response)=>{if(response.code===200){response.data.src_list.forEach((item)=>{document.body.appendChild(createScript(item));});}});})();
